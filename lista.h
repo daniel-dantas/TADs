@@ -13,5 +13,5 @@ Lista *new_Lista();
 void addLista(Lista *lista,void *elemento);
 int isEmptyList(Lista *lista);
 int sizeList(Lista *lista);
-void *getList(int index);
+void *getList(Lista *,int index);
 //int removeLista(Lista *lista, void *elemento);

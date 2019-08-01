@@ -47,7 +47,16 @@ int isEmptyList(Lista *lista){
     return 0;
 }
 
-void *getList(int index){
+void *getList(Lista *lista,int index){
+    Nodo *aux;
+    for(aux = lista->inicio; aux != NULL; aux = aux->proximo){
+        if(aux->index == index){
+            return aux->elemento;
+        }
+    }
+    
+    printf("Index acima da capacidade!");
+    return NULL;
     
 }
 
@@ -59,13 +68,39 @@ int removeLista(Lista *lista, int index){
         return NULL;
     }else{
         Nodo *aux;
+        Nodo *ant = NULL;
         for(aux = lista->inicio; aux != NULL; aux = aux->proximo){
             if(aux->index == index){
                 
-                Nodo aux2;
+                if(ant == NULL){
+                    
+                    
+                    if(aux->proximo != NULL){
+                        aux->proximo->index = aux->proximo->index--;
+                    }
+                    
+                    lista->inicio = aux->proximo;
+                    
+                    free(aux);
+                }else{
+                    
+                    if(aux->proximo != NULL){
+                        aux->proximo->index = aux->proximo->index--;
+                    }
+                    
+                    ant->proximo = aux->proximo;
+                    
+                    free(aux);
+                    
+                }
+                
                 
                 
             }
+            
+            ant = aux;
+            
+            
         }
         
         

@@ -8,9 +8,6 @@
 
 void main(){
     
-    Lista *l = new_Lista();
-    
-    
     
     
 }
