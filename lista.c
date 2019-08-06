@@ -4,7 +4,6 @@
 #include "lista.h"
 
 struct nodo{
-    int index;
     void *elemento;
     struct nodo *proximo;
 };
@@ -24,7 +23,6 @@ void addLista(Lista *lista, void *elemento){
     Nodo *novo = (Lista *) malloc(sizeof (Lista));
     novo->elemento = elemento;
     novo->proximo = NULL;
-    novo->index = sizeList(lista);
     if(isEmptyList(lista)){
         lista->inicio = novo;
     }else{
@@ -49,10 +47,14 @@ int isEmptyList(Lista *lista){
 
 void *getList(Lista *lista,int index){
     Nodo *aux;
+    int cont = 0;
     for(aux = lista->inicio; aux != NULL; aux = aux->proximo){
-        if(aux->index == index){
+        
+        if(index == cont){
             return aux->elemento;
         }
+        
+        cont++;
     }
     
     printf("Index acima da capacidade!");
@@ -69,27 +71,16 @@ int removeLista(Lista *lista, int index){
     }else{
         Nodo *aux;
         Nodo *ant = NULL;
+        int cont = 0;
         for(aux = lista->inicio; aux != NULL; aux = aux->proximo){
-            if(aux->index == index){
+            if(cont == index){
                 
                 if(ant == NULL){
-                    
-                    
-                    if(aux->proximo != NULL){
-                        aux->proximo->index = aux->proximo->index--;
-                    }
-                    
                     lista->inicio = aux->proximo;
-                    
                     free(aux);
+                    
                 }else{
-                    
-                    if(aux->proximo != NULL){
-                        aux->proximo->index = aux->proximo->index--;
-                    }
-                    
                     ant->proximo = aux->proximo;
-                    
                     free(aux);
                     
                 }
@@ -101,6 +92,7 @@ int removeLista(Lista *lista, int index){
             ant = aux;
             
             
+            cont++;
         }
         
         
