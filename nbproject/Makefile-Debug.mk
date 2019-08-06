@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/fila.o \
+	${OBJECTDIR}/funcionario.o \
 	${OBJECTDIR}/lista.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pilha.o
@@ -69,6 +70,11 @@ ${OBJECTDIR}/fila.o: fila.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fila.o fila.c
+
+${OBJECTDIR}/funcionario.o: funcionario.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/funcionario.o funcionario.c
 
 ${OBJECTDIR}/lista.o: lista.c 
 	${MKDIR} -p ${OBJECTDIR}

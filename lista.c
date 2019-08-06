@@ -53,7 +53,6 @@ void *getList(Lista *lista,int index){
         if(index == cont){
             return aux->elemento;
         }
-        
         cont++;
     }
     
